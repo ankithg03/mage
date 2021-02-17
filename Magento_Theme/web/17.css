@@ -1,0 +1,1 @@
+.CompareProductGuest{max-width:var(--content-wrapper-width);padding:3rem 1rem;margin-left:auto;margin-right:auto}@media (max-width:767px){.CompareProductGuest{margin-top:calc(var(--header-height) + 15px);min-height:calc(100vh - var(--header-height) - var(--navbar-height))}}.CompareProductGuest-Heading{font-size:20px;font-weight:400;text-transform:none;margin:0 0 2rem}

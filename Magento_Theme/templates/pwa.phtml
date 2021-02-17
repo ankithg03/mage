@@ -1,0 +1,47 @@
+<?php
+    use \Codilar\StoreGraphQl\Helper\Store as StoreHelper;
+    use \Codilar\Pwa\Helper\Pwa as PwaHelper;
+
+    $om = \Magento\Framework\App\ObjectManager::getInstance();
+
+    /** @var StoreHelper $storeHelper */
+    $storeHelper = $om->get(StoreHelper::class);
+
+    /** @var PwaHelper $pwaHelper */
+    $pwaHelper = $om->get(PwaHelper::class);
+
+    $themeConfigPath = '/theme-config/' . $pwaHelper->getThemeDeploymentVersion() . '/' . $storeHelper->getCurrentStore();
+
+    $availableLocales = ["en_US","ja_JP","th_TH"];
+    $currentLocale = $storeHelper->getCurrentLocale();
+    if (!in_array($currentLocale, $availableLocales)) {
+        $currentLocale = "en_US";
+    }
+?> <!doctype html><html lang="en"><head><meta charset="utf-8"><script>(function (global) {
+                if ('serviceWorker' in navigator) {
+                    window.addEventListener('load', function() {
+                        navigator.serviceWorker.register('/sw.js')
+                            .then((registration) => {
+                                if (window.BroadcastChannel) {
+                                    const channel = new BroadcastChannel('channel_serviceWorker_registration');
+                                    channel.postMessage('service_worker_register_broadcast');
+                                }
+                            });
+                    });
+                }
+                var actionName = {type: '<?php echo $this->getAction(); ?>'};
+                global.actionName = actionName;
+                global.codilar = {};
+                global.codilar.applicationConfig = {
+                    mStoreInfo: {
+                        stores: <?php echo \json_encode($storeHelper->getStores()) ?>,
+                        currentStore: "<?php echo $storeHelper->getCurrentStore() ?>",
+                        currentCategoryId: <?php  echo \json_encode($storeHelper->getRootCategoryId()) ?> },
+                    googleAnalytics: <?php echo \json_encode($pwaHelper->getGoogleAnalyticsConfig()) ?>,
+                    isGuestCheckout: <?php echo $pwaHelper->getIsGuestCheckout() ?>,
+                    isHidePrice: <?php echo $pwaHelper->getIsHidePrice() ?>,
+                    googleTagManager: <?php echo \json_encode($pwaHelper->getGoogleTagManagerConfig()) ?>,
+                    pushNotification: <?php echo \json_encode($pwaHelper->getConfig()) ?>,
+                    zendeskSrc: "<?php echo $pwaHelper->getZendeskId() ?>"
+                };
+            })(window);</script><link rel="preload" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliLight.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliRegular.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliSemiBold.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliBold.woff2" as="font" type="font/woff2" crossorigin=""><link rel="preload" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliExtraBold.woff2" as="font" type="font/woff2" crossorigin=""><link rel="stylesheet" href="<?php echo $themeConfigPath ?>/variables.css"><style>@font-face{font-family:Muli;font-style:normal;font-weight:300;src:local('Muli Light'),local('Muli-Light'),url(/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliLight.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap}@font-face{font-family:Muli;font-style:normal;font-weight:400;src:local('Muli Regular'),local('Muli-Regular'),url(/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliRegular.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap}@font-face{font-family:Muli;font-style:normal;font-weight:600;src:local('Muli SemiBold'),local('Muli-SemiBold'),url(/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliSemiBold.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap}@font-face{font-family:Muli;font-style:normal;font-weight:700;src:local('Muli Bold'),local('Muli-Bold'),url(/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliBold.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap}@font-face{font-family:Muli;font-style:normal;font-weight:800;src:local('Muli ExtraBold'),local('Muli-ExtraBold'),url(/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/font/MuliExtraBold.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap}</style><title>...</title><link rel="stylesheet" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/main.css?46bb5d45f6a9e511cbfe"><link rel="shortcut icon" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/assets/favicon/codilar_star.png"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="apple-mobile-web-app-title" content="GST"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="theme-color" content="#ffffff"><link rel="apple-touch-startup-image" sizes="1024x1024" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_1024x1024.0996163f387aa0dea22ddc6757da2a3b.png"><link rel="apple-touch-icon" sizes="1024x1024" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_1024x1024.51600e22bdf5456a23b49efb70ac10de.png"><link rel="apple-touch-icon" sizes="180x180" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_180x180.13d959d75c51c3e1f8c6d68c14a8b19b.png"><link rel="apple-touch-icon" sizes="167x167" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_167x167.3b573d76a2d0c3b9882a130d3ecf78e0.png"><link rel="apple-touch-icon" sizes="152x152" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_152x152.fcbe8f2a54c6bf55cc704e583a22b7a8.png"><link rel="apple-touch-icon" sizes="120x120" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_120x120.26e52486807dfcc8a26e078c96d56618.png"><link rel="manifest" href="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/manifest.3248fd6846dff394e79361cf2e8eb9e8.json"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script src="/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/<?php echo $currentLocale ?>.bundle.js"></script></body></html>

@@ -1,0 +1,78 @@
+{
+  "icons": [
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_512x512.52578c54b6099ab098620288fc5a140d.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_192x192.339f441878c175cc195c5d1cb6257ea8.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_144x144.c358898e8745335411d3a8573c5a9ab0.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_96x96.2276f384e42eaad897415bd6d8a5bdd2.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_72x72.1b60d2666a1394a79ef2d577d66e9e2c.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_48x48.d5ad6d4585b4a51445dcc506dc165eb4.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/android/icon_36x36.ac068611b36b6c81600e31a656938594.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_1024x1024.0996163f387aa0dea22ddc6757da2a3b.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_1024x1024.51600e22bdf5456a23b49efb70ac10de.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_180x180.13d959d75c51c3e1f8c6d68c14a8b19b.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_167x167.3b573d76a2d0c3b9882a130d3ecf78e0.png",
+      "sizes": "167x167",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_152x152.fcbe8f2a54c6bf55cc704e583a22b7a8.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/version1613566806671/frontend/Codilarpwa/desktop/en_US/Magento_Theme/icons/ios/icon_120x120.26e52486807dfcc8a26e078c96d56618.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ],
+  "name": "Global Style Trading",
+  "short_name": "GST",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "Global Style Trading store",
+  "background_color": "#ffffff",
+  "lang": "en-US",
+  "theme_color": "#ffffff"
+}
